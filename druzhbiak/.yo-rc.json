@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.druzhbiak.netflix"
+    },
+    "jhipsterVersion": "6.8.0",
+    "applicationType": "monolith",
+    "baseName": "netflix",
+    "packageName": "com.druzhbiak.netflix",
+    "packageFolder": "com/druzhbiak/netflix",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YmZmNzFhY2Q0ZTZlZmM4ODBhOTkyZjJiY2E3ZWM2MWE0MGRkYzk5MDYyODllZDM3ZTUzYTQ4YWY5NmQ2NjcyMmEyYzYwMDFhNzVkNzUxYTZhNGQ0MWE1ZjNlOTkzYmY5ODg2ZWUwNTdiNWRhZTllYjY2NzE1YWFiNzM3NTIwYWU=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "cerulean",
+    "clientThemeVariant": "primary",
+    "creationTimestamp": 1589462406645,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "blueprints": []
+  }
+}

@@ -1,0 +1,30 @@
+{
+    "name": "MyList",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "movie",
+            "otherEntityRelationshipName": "myList",
+            "relationshipName": "movies"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "netflixUser",
+            "otherEntityRelationshipName": "list",
+            "relationshipName": "user",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200514133000",
+    "entityTableName": "my_list",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

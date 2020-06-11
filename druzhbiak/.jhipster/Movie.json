@@ -1,0 +1,69 @@
+{
+    "name": "Movie",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "releaseDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "Type",
+            "fieldValues": "SERIES,FILM"
+        },
+        {
+            "fieldName": "genre",
+            "fieldType": "Genre",
+            "fieldValues": "ACTION,ANIME,COMEDY,SCIENCE,FANTASY"
+        },
+        {
+            "fieldName": "creator",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rating",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "link",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "availableInHD",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "episode",
+            "otherEntityRelationshipName": "series",
+            "relationshipName": "episodes"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "myList",
+            "otherEntityRelationshipName": "movies",
+            "relationshipName": "myList",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200514133200",
+    "entityTableName": "movie",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span>Netflix Users</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-netflix-user" [routerLink]="['/netflix-user/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Netflix User
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="netflixUsers?.length === 0">
+        <span>No netflixUsers found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="netflixUsers?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="name"><span>Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="email"><span>Email</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="password"><span>Password</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="bio"><span>Bio</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="category"><span>Category</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="birthDate"><span>Birth Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="list.id"><span>List</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+                <tr *ngFor="let netflixUser of netflixUsers ;trackBy: trackId">
+                    <td><a [routerLink]="['/netflix-user', netflixUser.id, 'view']">{{ netflixUser.id }}</a></td>
+                    <td>{{ netflixUser.name }}</td>
+                    <td>{{ netflixUser.email }}</td>
+                    <td>{{ netflixUser.password }}</td>
+                    <td>{{ netflixUser.bio }}</td>
+                    <td>{{ netflixUser.category }}</td>
+                    <td>{{ netflixUser.birthDate | date:'mediumDate' }}</td>
+                    <td>
+                        <div *ngIf="netflixUser.list">
+                            <a [routerLink]="['/my-list', netflixUser.list?.id, 'view']" >{{ netflixUser.list?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/netflix-user', netflixUser.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/netflix-user', netflixUser.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(netflixUser)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="episode">
+            <h2><span>Episode</span> {{ episode.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{ episode.name }}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{ episode.description }}</span>
+                </dd>
+                <dt><span>Producer</span></dt>
+                <dd>
+                    <span>{{ episode.producer }}</span>
+                </dd>
+                <dt><span>Release Date</span></dt>
+                <dd>
+                    <span>{{ episode.releaseDate }}</span>
+                </dd>
+                <dt><span>Video URL</span></dt>
+                <dd>
+                    <span>{{ episode.videoURL }}</span>
+                </dd>
+                <dt><span>Series</span></dt>
+                <dd>
+                    <div *ngIf="episode.series">
+                        <a [routerLink]="['/movie', episode.series?.id, 'view']">{{ episode.series?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/episode', episode.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

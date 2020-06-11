@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-episode-heading">Create or edit a Episode</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_producer">Producer</label>
+                    <input type="text" class="form-control" name="producer" id="field_producer"
+                           formControlName="producer"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_releaseDate">Release Date</label>
+                    <div class="input-group">
+                        <input id="field_releaseDate" type="text" class="form-control" name="releaseDate" ngbDatepicker #releaseDateDp="ngbDatepicker" formControlName="releaseDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="releaseDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_videoURL">Video URL</label>
+                    <input type="text" class="form-control" name="videoURL" id="field_videoURL"
+                           formControlName="videoURL"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_series">Series</label>
+                    <select class="form-control" id="field_series" name="series" formControlName="series">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="movieOption.id === editForm.get('series')!.value?.id ? editForm.get('series')!.value : movieOption" *ngFor="let movieOption of movies; trackBy: trackById">{{ movieOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

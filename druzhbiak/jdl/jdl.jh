@@ -1,0 +1,66 @@
+entity NetflixUser {
+	id Long
+    name String
+    email String
+    password String
+    bio String
+    category Category
+    birthDate LocalDate
+}
+
+entity MyList {
+	id Long
+}
+
+entity SavedSearch {
+	id Long
+    searchText String
+}
+
+entity Movie {
+	id Long
+    name String
+    description String
+    releaseDate LocalDate
+    type Type
+    genre Genre
+    creator String
+    rating Double
+    link String
+    availableInHD Boolean
+}
+
+entity Episode {
+	id Long
+    name String
+    description String
+    producer String
+    releaseDate LocalDate
+    videoURL String
+}
+
+enum Category {
+CHILD, ADULT
+}
+
+enum Genre {
+ACTION, ANIME, COMEDY, SCIENCE, FANTASY
+}
+
+enum Type {
+SERIES, FILM
+}
+
+relationship OneToOne {
+	NetflixUser{list} to MyList{user}
+}
+
+relationship OneToMany {
+	NetflixUser{savedSearches} to SavedSearch{user}
+    MyList{movies} to Movie
+    Movie{episodes} to Episode{series}
+}
+
+filter all 
+paginate all with infinite-scroll
+service all with serviceImpl
